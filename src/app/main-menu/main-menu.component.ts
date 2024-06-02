@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-main-menu',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './main-menu.component.html',
+  styleUrl: './main-menu.component.css'
 })
-export class AppComponent {
+export class MainMenuComponent {
   title = 'PokeRogue';
 }
