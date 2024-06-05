@@ -10,4 +10,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class MainMenuComponent {
   title = 'PokeRogue';
+
+  onClick(){
+    alert("aaaaaaaaaaaaaaaaaaaaaaaa");
+  }
+
 }
