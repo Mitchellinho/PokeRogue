@@ -12,7 +12,7 @@ export class MainMenuComponent {
   title = 'PokeRogue';
 
   onClick(){
-    alert("aaaaaaaaaaaaaaaaaaaaaaaa");
+    alert("Test");
   }
 
 }
