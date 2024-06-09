@@ -1,4 +1,11 @@
-<p>main-menu works!</p>
-<button type="input" (click)='onClick()'>Test</button>
+<div style="text-align:center">
+    <h1>Abilities</h1>
+  </div>
+  <h2>Here are the abilities created so far: </h2>
+  <ul>
+    <li *ngFor="let ability of abilitiesList">
+      {{ability.id + " : " + ability.name}}
+    </li>
+  </ul>
 
 <router-outlet />
