@@ -1,8 +1,8 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Backend Files
-/src/app/backend/database.ini
-/src/app/backend/__pycache__
+*.ini
+/backend/main/python/__pycache__
 
 # Compiled output
 /dist
@@ -33,7 +33,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/frontend/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
