@@ -24,11 +24,21 @@ export class MainMenuComponent implements OnInit {
   
   }   
 
-  ngOnInit(): void{
+  ngOnInit(): void {
+    // Create audio element and play music
+    /* var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', '../../assets/music/Opening.mp3');
+    audioElement.setAttribute('autoplay', 'autoplay');
+    audioElement.loop=true;
+    audioElement.play();  
+ */
+    //get all Abilities
     this.abilityService.getAbilities().subscribe(
       (abilities: Ability[]) => {
       this.abilitiesList = abilities;
     });
+
+    //get all Users
     this.userService.getUsers().subscribe(
       (users: User[]) => {
       this.usersList = users;
