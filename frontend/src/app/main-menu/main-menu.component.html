@@ -7,5 +7,28 @@
       {{ability.id + " : " + ability.name}}
     </li>
   </ul>
+<div>
+  <label for="name">Name</label>
+  <input class="addAbilityInput" type="text" id="name" name="name"/>
+</div>
+<button (click)="addAbility()">Add Ability</button>
+<div style="text-align:center">
+    <h1>Users</h1>
+  </div>
+  <h2>Here are the Users created so far: </h2>
+  <ul>
+    <li *ngFor="let user of usersList">
+      {{user.username}}
+    </li>
+  </ul>
+<div>
+  <label for="name">Username</label>
+  <input class="createUserInput" type="text" id="username" name="username"/>    
+</div>
+<div>
+  <label for="name">Password</label>
+  <input class="createUserInput" type="text" id="password" name="password"/>
+</div>
+<button (click)="createAccount()">Create account</button>
 
 <router-outlet />

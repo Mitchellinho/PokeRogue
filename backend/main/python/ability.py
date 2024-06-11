@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, post_load
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -18,3 +18,7 @@ class Ability(Base):
 class AbilitySchema(Schema):
     id = fields.Int()
     name = fields.Str()
+
+    @post_load
+    def create_ability(self, data, **kwargs):
+        return Ability(**data)

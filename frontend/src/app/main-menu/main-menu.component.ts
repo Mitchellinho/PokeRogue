@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AbilityService } from '../../api/ability/abilities.service';
+import { AbilityService } from '../../api/ability/ability.service';
+import { UserService } from '../../api/user/user.service';
 import { Ability } from '../../api/ability/ability.model';
+import { User } from '../../api/user/user.model';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -16,16 +18,71 @@ import { NgFor } from '@angular/common';
 export class MainMenuComponent implements OnInit {
   title = 'PokeRogue';
   abilitiesList: Ability[] = [];
+  usersList: User[] = [];
 
-constructor(private readonly abilityService: AbilityService){
+  constructor(private readonly abilityService: AbilityService, private readonly userService: UserService){
   
-}
+  }   
 
-ngOnInit(): void{
-  this.abilityService.getAbilities().subscribe(
-    (abilities: Ability[]) => {
-    this.abilitiesList = abilities;
-  });
-}
+  ngOnInit(): void{
+    this.abilityService.getAbilities().subscribe(
+      (abilities: Ability[]) => {
+      this.abilitiesList = abilities;
+    });
+    this.userService.getUsers().subscribe(
+      (users: User[]) => {
+      this.usersList = users;
+      }
+    )
+  }
 
+  createAccount(): void{
+
+    // Get Input Field values
+    const values = document.getElementsByClassName("createUserInput") as HTMLCollectionOf<HTMLInputElement>;
+
+    // Create new User
+    const userToCreate: User = {
+      username: "",
+      password: "",
+    }
+
+    // Assign Input Field Values to new User
+    userToCreate.username = values[0].value;
+    userToCreate.password = values[1].value;
+
+    // Delete input field values
+    values[0].value = "";
+    values[1].value = "";
+
+    // Apply Changes to Database and reload page if successful
+    this.userService.postUser(userToCreate).subscribe( 
+    _ => window.location.reload(),
+    );
+  }
+
+addAbility(): void{
+
+  // Get Input Field values
+  const values = document.getElementsByClassName("addAbilityInput") as HTMLCollectionOf<HTMLInputElement>;
+
+  // Create new Ability
+  const abilityToCreate: Ability = {
+    id: this.abilitiesList[this.abilitiesList.length-1].id + 1,
+    name: "",
+  }
+
+  // Assign Input Field Values to new Ability
+  abilityToCreate.name = values[0].value;
+
+
+  // Delete input field values
+  values[0].value = "";
+
+  // Apply Changes to Database and reload page if successful
+this.abilityService.postUser(abilityToCreate).subscribe( 
+  _ => window.location.reload(),
+);
+
+}
 }

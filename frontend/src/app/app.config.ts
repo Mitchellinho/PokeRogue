@@ -3,14 +3,16 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { AbilityService } from '../api/ability/abilities.service';
+import { AbilityService } from '../api/ability/ability.service';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { UserService } from '../api/user/user.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(),
     AbilityService,
+    UserService,
     provideHttpClient(withFetch()),
     importProvidersFrom(HttpClientModule), 
     ]
