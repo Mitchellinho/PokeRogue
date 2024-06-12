@@ -1,36 +1,57 @@
-<div style="text-align:center">
+<div *ngIf="mainMenu">
+  <div style="text-align:center">
     <h1>Abilities</h1>
   </div>
-  <h2>Here are the abilities created so far: </h2>
-  <ul>
-    <li *ngFor="let ability of abilitiesList">
-      {{ability.id + " : " + ability.name}}
-    </li>
-  </ul>
-<div>
-  <label for="name">Name</label>
-  <input class="addAbilityInput" type="text" id="name" name="name"/>
-</div>
-<button (click)="addAbility()">Add Ability</button>
-<div style="text-align:center">
+  <div>
+    <h2>Here are the abilities created so far: </h2>
+    <ul>
+      <li *ngFor="let ability of abilitiesList">
+        {{ability.id + " : " + ability.name}}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <label for="name">Name</label>
+    <input class="addAbilityInput" type="text" id="name" name="name"/>
+  </div>
+  <button (click)="addAbility()">Add Ability</button>
+  <div style="text-align:center">
     <h1>Users</h1>
   </div>
-  <h2>Here are the Users created so far: </h2>
-  <ul>
-    <li *ngFor="let user of usersList">
-      {{user.username}}
-    </li>
-  </ul>
-<div>
-  <label for="name">Username</label>
-  <input class="createUserInput" type="text" id="username" name="username"/>    
+  <div>
+    <h2>Here are the Users created so far: </h2>
+    <ul>
+      <li *ngFor="let user of usersList">
+        {{user.username}}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <label for="name">Username</label>
+    <input class="createUserInput" type="text" id="username" name="username"/>    
+  </div>
+  <div>
+    <label for="name">Password</label>
+    <input class="createUserInput" type="text" id="password" name="password"/>
+  </div>
+  <button (click)="createAccount()">Create account</button>
+  <div>
+    <img src="../../assets/pokemon/bulbasaur.gif" alt="bulbasaur jumping" width="150" height="150"> 
+  </div>
+  <div>
+    <ul class="mainMenuList">
+      <li class="mainMenuItem active">
+        New Game
+      </li>
+      <li class="mainMenuItem">
+        Load Game
+      </li>
+      <li class="mainMenuItem">
+        Settings
+      </li>
+    </ul>
+  </div>
 </div>
-<div>
-  <label for="name">Password</label>
-  <input class="createUserInput" type="text" id="password" name="password"/>
+<div *ngIf="settings">
+  <app-settings></app-settings>
 </div>
-<button (click)="createAccount()">Create account</button>
-<div>
-  <img src="../../assets/pokemon/bulbasaur.gif" alt="bulbasaur jumping" width="150" height="150"> 
-</div>
-<router-outlet />

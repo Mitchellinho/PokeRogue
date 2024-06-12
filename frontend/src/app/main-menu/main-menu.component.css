@@ -1,0 +1,7 @@
+ul {
+    list-style-type: none;
+  }
+
+.mainMenuList .active::marker {
+    content: "▶";
+  }
