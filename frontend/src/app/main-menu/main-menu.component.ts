@@ -5,6 +5,7 @@ import { Ability } from '../../api/ability/ability.model';
 import { User } from '../../api/user/user.model';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from '../settings/settings.component';
+import { ActiveComponentService } from '../service/active-component.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -18,11 +19,12 @@ import { SettingsComponent } from '../settings/settings.component';
 })
 export class MainMenuComponent implements OnInit {
   title = 'PokeRogue';
-  settings: Boolean = false;
   abilitiesList: Ability[] = [];
   usersList: User[] = [];
   
-  constructor(private readonly abilityService: AbilityService, private readonly userService: UserService){
+  constructor(private readonly abilityService: AbilityService,
+               private readonly userService: UserService,
+                private readonly activeComponentService: ActiveComponentService){
   
   }   
 
@@ -100,16 +102,25 @@ export class MainMenuComponent implements OnInit {
   @HostListener('document: keydown', ['$event'])
   handleKeyEvent(event: KeyboardEvent) {
     if(document.getElementsByClassName('active')[0].classList.contains('active')){
+      const activeMainMenuItem = document.getElementsByClassName('mainMenuActive')[0];
       if(event.key == 'ArrowDown') {
-        const activeMainMenuItem = document.getElementsByClassName('mainMenuActive')[0];
         (activeMainMenuItem.nextSibling as HTMLLIElement).classList.add('mainMenuActive');
         activeMainMenuItem.classList.remove('mainMenuActive');
       } else if(event.key == 'ArrowUp'){
-        const activeMainMenuItem = document.getElementsByClassName('mainMenuActive')[0];
         (activeMainMenuItem.previousSibling as HTMLLIElement).classList.add('mainMenuActive');
         activeMainMenuItem.classList.remove('mainMenuActive');
       } else if(event.key == 'Enter'){
-        this.settings = !this.settings;
+        switch(activeMainMenuItem.innerHTML){
+          case 'New Game':  
+            this.activeComponentService.updateIsGameActive(true);
+            break; 
+            case 'Load Game': 
+            break;
+          case 'Settings': 
+            this.activeComponentService.updateIsSettingsActive(true);
+            break;
+        }
+        this.activeComponentService.updateIsMainMenuActive(false);
       }
     }
   }

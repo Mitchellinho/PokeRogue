@@ -1,8 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MenuComponent } from './menu/menu.component';
 import { CommonModule } from '@angular/common';
+import { ActiveComponentService } from './service/active-component.service';
+import { SettingsComponent } from './settings/settings.component';
+import { GameComponent } from './game/game.component';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +14,28 @@ import { CommonModule } from '@angular/common';
     RouterOutlet,
     MainMenuComponent,
     MenuComponent,
+    GameComponent,
+    SettingsComponent,
     CommonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   menu: Boolean = false;
   mainMenu: Boolean = true;
+  settings: Boolean = false;
+  game: Boolean = false;
+
+  constructor(private readonly activeComponentService: ActiveComponentService){
+
+  }
+
+  ngOnInit(): void{
+    this.activeComponentService.isSettingsActive.subscribe((value: Boolean) => this.settings = value);
+    this.activeComponentService.isMainMenuActive.subscribe((value: Boolean) => this.mainMenu = value);
+    this.activeComponentService.isGameActive.subscribe((value: Boolean) => this.game = value);
+  }
    
   @HostListener('document: keydown', ['$event'])
   handleEnterEvent(event: KeyboardEvent) {
