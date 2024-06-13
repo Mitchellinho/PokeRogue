@@ -1,7 +1,5 @@
-<div *ngIf="mainMenu">
-  <div style="text-align:center">
-    <h1>Abilities</h1>
-  </div>
+<img src="../../assets/PokeRogue.png" alt="Logo" style="position: absolute; left: 50%; top: 2%; transform: translateX(-50%);" > 
+<div style="border-style: solid; border-color: yellow; position: absolute; left: 1%; bottom: 1%; background: gray; color: white;">
   <div>
     <h2>Here are the abilities created so far: </h2>
     <ul>
@@ -15,9 +13,6 @@
     <input class="addAbilityInput" type="text" id="name" name="name"/>
   </div>
   <button (click)="addAbility()">Add Ability</button>
-  <div style="text-align:center">
-    <h1>Users</h1>
-  </div>
   <div>
     <h2>Here are the Users created so far: </h2>
     <ul>
@@ -35,10 +30,8 @@
     <input class="createUserInput" type="text" id="password" name="password"/>
   </div>
   <button (click)="createAccount()">Create account</button>
-  <div>
-    <img src="../../assets/pokemon/bulbasaur.gif" alt="bulbasaur jumping" width="150" height="150"> 
-  </div>
-  <div>
+</div>
+  <div style="border-style: solid; width: 30%; height: 50%; right: 1%; bottom: 1%; position: absolute;">
     <ul class="mainMenuList">
       <li class="mainMenuItem active">
         New Game
@@ -51,7 +44,6 @@
       </li>
     </ul>
   </div>
-</div>
 <div *ngIf="settings">
   <app-settings></app-settings>
 </div>

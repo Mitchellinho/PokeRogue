@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   menu: Boolean = false;
   mainMenu: Boolean = true;
-
+   
   @HostListener('document: keydown', ['$event'])
   handleEnterEvent(event: KeyboardEvent) {
     if(event.key == 'Escape' || event.key == 'm'){

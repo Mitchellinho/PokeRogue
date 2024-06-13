@@ -18,12 +18,10 @@ import { SettingsComponent } from '../settings/settings.component';
 })
 export class MainMenuComponent implements OnInit {
   title = 'PokeRogue';
-  mainMenu: Boolean = true;
   settings: Boolean = false;
   abilitiesList: Ability[] = [];
   usersList: User[] = [];
-
-
+  
   constructor(private readonly abilityService: AbilityService, private readonly userService: UserService){
   
   }   
@@ -111,7 +109,6 @@ export class MainMenuComponent implements OnInit {
       activeMainMenuItem.classList.remove('active');
     } else if(event.key == 'Enter'){
       this.settings = !this.settings;
-      this.mainMenu = !this.mainMenu;
     }
   }
 }
