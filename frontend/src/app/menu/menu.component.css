@@ -1,0 +1,12 @@
+ul {
+    list-style-type: none;
+    font-size: 60px;
+  }
+
+  li.menuItem:not(:last-child) { 
+    margin-bottom: 10%;  
+ }
+
+.menuList .menuActive::marker {
+    content: "▶";
+  }

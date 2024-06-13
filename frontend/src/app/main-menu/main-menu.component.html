@@ -1,5 +1,5 @@
 <img src="../../assets/PokeRogue.png" alt="Logo" style="position: absolute; left: 50%; top: 2%; transform: translateX(-50%);" > 
-<div style="border-style: solid; border-color: yellow; position: absolute; left: 1%; bottom: 1%; background: gray; color: white;">
+<div class="inputBox" style="position: absolute; left: 1%; bottom: 1%; background: gray; color: white;">
   <div>
     <h2>Here are the abilities created so far: </h2>
     <ul>
@@ -31,9 +31,9 @@
   </div>
   <button (click)="createAccount()">Create account</button>
 </div>
-  <div style="border-style: solid; width: 30%; height: 50%; right: 1%; bottom: 1%; position: absolute;">
-    <ul class="mainMenuList">
-      <li class="mainMenuItem active">
+  <div class ="inputBox" style="right: 1%; bottom: 1%; position: absolute; background: gray; color: white; text-align: left;">
+    <ul class="mainMenuList active">
+      <li class="mainMenuItem mainMenuActive">
         New Game
       </li>
       <li class="mainMenuItem">
@@ -44,6 +44,4 @@
       </li>
     </ul>
   </div>
-<div *ngIf="settings">
-  <app-settings></app-settings>
-</div>
+  <app-settings *ngIf="settings"></app-settings>

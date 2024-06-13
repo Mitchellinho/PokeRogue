@@ -1,7 +1,12 @@
-ul {
+ul .mainMenuItem{
     list-style-type: none;
+    font-size: 60px;
   }
 
-.mainMenuList .active::marker {
+  li.mainMenuItem:not(:last-child) { 
+    margin-bottom: 10px;  
+ }
+
+.mainMenuList .mainMenuActive::marker {
     content: "▶";
   }

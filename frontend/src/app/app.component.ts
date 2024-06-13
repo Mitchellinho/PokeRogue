@@ -23,7 +23,14 @@ export class AppComponent {
   @HostListener('document: keydown', ['$event'])
   handleEnterEvent(event: KeyboardEvent) {
     if(event.key == 'Escape' || event.key == 'm'){
-      this.menu = !this.menu;
+      const mainMenuList = (document.getElementsByClassName('mainMenuList')[0] as HTMLUListElement);
+      if(!this.menu){
+        this.menu = true;
+        mainMenuList.classList.remove('active');
+      } else{
+        this.menu = false;
+        mainMenuList.classList.add('active');
+      }
     }
   }
 }

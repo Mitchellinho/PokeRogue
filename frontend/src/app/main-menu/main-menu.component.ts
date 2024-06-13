@@ -99,16 +99,18 @@ export class MainMenuComponent implements OnInit {
 
   @HostListener('document: keydown', ['$event'])
   handleKeyEvent(event: KeyboardEvent) {
-    if(event.key == 'ArrowDown') {
-      const activeMainMenuItem = document.getElementsByClassName('active')[0];
-      (activeMainMenuItem.nextSibling as HTMLLIElement).classList.add('active');
-      activeMainMenuItem.classList.remove('active');
-    } else if(event.key == 'ArrowUp'){
-      const activeMainMenuItem = document.getElementsByClassName('active')[0];
-      (activeMainMenuItem.previousSibling as HTMLLIElement).classList.add('active');
-      activeMainMenuItem.classList.remove('active');
-    } else if(event.key == 'Enter'){
-      this.settings = !this.settings;
+    if(document.getElementsByClassName('active')[0].classList.contains('active')){
+      if(event.key == 'ArrowDown') {
+        const activeMainMenuItem = document.getElementsByClassName('mainMenuActive')[0];
+        (activeMainMenuItem.nextSibling as HTMLLIElement).classList.add('mainMenuActive');
+        activeMainMenuItem.classList.remove('mainMenuActive');
+      } else if(event.key == 'ArrowUp'){
+        const activeMainMenuItem = document.getElementsByClassName('mainMenuActive')[0];
+        (activeMainMenuItem.previousSibling as HTMLLIElement).classList.add('mainMenuActive');
+        activeMainMenuItem.classList.remove('mainMenuActive');
+      } else if(event.key == 'Enter'){
+        this.settings = !this.settings;
+      }
     }
   }
 }
