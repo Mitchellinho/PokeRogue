@@ -26,15 +26,29 @@ export class AppComponent implements OnInit {
   mainMenu: Boolean = true;
   settings: Boolean = false;
   game: Boolean = false;
+  attackChoice: Boolean = false;
+  decision: Boolean = false;
+  gameMode: Boolean = false;
+  healthbar: Boolean = false;
+  pokemonSelection: Boolean = false;
+  text: Boolean = false;
 
   constructor(private readonly activeComponentService: ActiveComponentService){
 
   }
 
   ngOnInit(): void{
-    this.activeComponentService.isSettingsActive.subscribe((value: Boolean) => this.settings = value);
-    this.activeComponentService.isMainMenuActive.subscribe((value: Boolean) => this.mainMenu = value);
-    this.activeComponentService.isGameActive.subscribe((value: Boolean) => this.game = value);
+    this.activeComponentService.getIsSettingsActive().subscribe((value: Boolean) => this.settings = value);
+    this.activeComponentService.getIsMainMenuActive().subscribe((value: Boolean) => this.mainMenu = value);
+    this.activeComponentService.getIsGameActive().subscribe((value: Boolean) => this.game = value);
+    this.activeComponentService.getIsAttackChoiceActive().subscribe((value: Boolean) => this.attackChoice = value);
+    this.activeComponentService.getIsDecisionActive().subscribe((value: Boolean) => this.decision = value);
+    this.activeComponentService.getIsGameModeActive().subscribe((value: Boolean) => this.gameMode = value);
+    this.activeComponentService.getIsHealthbarActive().subscribe((value: Boolean) => this.healthbar = value);
+    this.activeComponentService.getIsPokemonSelectionActive().subscribe((value: Boolean) => this.pokemonSelection = value);
+    this.activeComponentService.getIsTextActive().subscribe((value: Boolean) => this.text = value);
+
+
   }
    
   @HostListener('document: keydown', ['$event'])
