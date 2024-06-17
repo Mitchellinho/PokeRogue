@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ActiveComponentService } from './service/active-component.service';
 import { SettingsComponent } from './settings/settings.component';
 import { GameComponent } from './game/game.component';
+import { LoadGameComponent } from './load-game/load-game.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { GameComponent } from './game/game.component';
     MenuComponent,
     GameComponent,
     SettingsComponent,
+    LoadGameComponent,
     CommonModule,
   ],
   templateUrl: './app.component.html',
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
   healthbar: Boolean = false;
   pokemonSelection: Boolean = false;
   text: Boolean = false;
+  loadGame: Boolean = false;
 
   constructor(private readonly activeComponentService: ActiveComponentService){
 
@@ -47,6 +50,7 @@ export class AppComponent implements OnInit {
     this.activeComponentService.getIsHealthbarActive().subscribe((value: Boolean) => this.healthbar = value);
     this.activeComponentService.getIsPokemonSelectionActive().subscribe((value: Boolean) => this.pokemonSelection = value);
     this.activeComponentService.getIsTextActive().subscribe((value: Boolean) => this.text = value);
+    this.activeComponentService.getIsLoadGameActive().subscribe((value: Boolean) => this.loadGame = value);
 
 
   }

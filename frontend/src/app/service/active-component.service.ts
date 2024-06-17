@@ -13,6 +13,7 @@ export class ActiveComponentService{
     private isHealthbarActive: Subject<Boolean> = new Subject<Boolean>;
     private isPokemonSelectionActive: Subject<Boolean> = new Subject<Boolean>;
     private isTextActive: Subject<Boolean> = new Subject<Boolean>;
+    private isLoadGameActive: Subject<Boolean> = new Subject<Boolean>;
 
   constructor() {
   }
@@ -87,6 +88,14 @@ updateIsTextActive(active: Boolean){
 
 getIsTextActive(): Subject<Boolean>{
     return this.isTextActive;
+}
+
+updateIsLoadGameActive(value: Boolean){
+    this.isLoadGameActive.next(value);
+}
+
+getIsLoadGameActive(): Subject<Boolean>{
+    return this.isLoadGameActive;
 }
 
 }

@@ -115,6 +115,7 @@ export class MainMenuComponent implements OnInit {
             this.activeComponentService.updateIsGameActive(true);
             break; 
             case 'Load Game': 
+            this.activeComponentService.updateIsLoadGameActive(true);
             break;
           case 'Settings': 
             this.activeComponentService.updateIsSettingsActive(true);
