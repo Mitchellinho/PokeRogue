@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './text.component.css'
 })
 export class TextComponent {
+  firstLine: String = "";
+  secondLine: String = "";
+
+  updateFirstLine(firstLine: String): void{
+    this.firstLine = firstLine;
+  }
+
+  updateSecondLine(secondLine: String): void{
+    this.secondLine = secondLine;
+  }
 
 }
