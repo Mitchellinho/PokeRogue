@@ -7,6 +7,9 @@ import { ActiveComponentService } from './service/active-component.service';
 import { SettingsComponent } from './settings/settings.component';
 import { GameComponent } from './game/game.component';
 import { LoadGameComponent } from './load-game/load-game.component';
+import { TextComponent } from './text/text.component';
+import { GamemodeComponent } from './gamemode/gamemode.component';
+import { PokemonSelectionComponent } from './pokemon-selection/pokemon-selection.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +21,9 @@ import { LoadGameComponent } from './load-game/load-game.component';
     GameComponent,
     SettingsComponent,
     LoadGameComponent,
+    TextComponent,
+    GamemodeComponent,
+    PokemonSelectionComponent,
     CommonModule,
   ],
   templateUrl: './app.component.html',
@@ -37,7 +43,6 @@ export class AppComponent implements OnInit {
   loadGame: Boolean = false;
 
   constructor(private readonly activeComponentService: ActiveComponentService){
-
   }
 
   ngOnInit(): void{
@@ -58,13 +63,16 @@ export class AppComponent implements OnInit {
   @HostListener('document: keydown', ['$event'])
   handleEnterEvent(event: KeyboardEvent) {
     if(event.key == 'Escape' || event.key == 'm'){
-      const mainMenuList = (document.getElementsByClassName('mainMenuList')[0] as HTMLUListElement);
       if(!this.menu){
+        const activeMenu = (document.getElementsByClassName('active')[0] as HTMLUListElement);
         this.menu = true;
-        mainMenuList.classList.remove('active');
+        activeMenu.classList.remove('active');
+        activeMenu.classList.add('inactive');
       } else{
+        const inactiveMenu = (document.getElementsByClassName('inactive')[0] as HTMLUListElement);
         this.menu = false;
-        mainMenuList.classList.add('active');
+        inactiveMenu.classList.remove('inactive');
+        inactiveMenu.classList.add('active');
       }
     }
   }

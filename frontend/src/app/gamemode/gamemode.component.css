@@ -1,0 +1,12 @@
+ul {
+    list-style-type: none;
+    font-size: 60px;
+  }
+
+  li.gameModeItem:not(:last-child) { 
+    margin-bottom: 10%;  
+ }
+
+.gameModeList .gameModeActive::marker {
+    content: "▶";
+  }

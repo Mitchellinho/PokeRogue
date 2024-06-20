@@ -109,10 +109,11 @@ export class MainMenuComponent implements OnInit {
       } else if(event.key == 'ArrowUp'){
         (activeMainMenuItem.previousSibling as HTMLLIElement).classList.add('mainMenuActive');
         activeMainMenuItem.classList.remove('mainMenuActive');
-      } else if(event.key == 'Enter'){
+      } else if(event.key == 'Enter' || event.key == 'z'){
         switch(activeMainMenuItem.innerHTML){
           case 'New Game':  
-            this.activeComponentService.updateIsGameActive(true);
+            this.activeComponentService.updateIsTextActive(true);
+            this.activeComponentService.updateIsGameModeActive(true);
             break; 
             case 'Load Game': 
             this.activeComponentService.updateIsLoadGameActive(true);
