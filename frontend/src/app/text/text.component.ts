@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-text',
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './text.component.css'
 })
 export class TextComponent {
-  firstLine: String = "";
+  @Input() firstLine: String = "";
   secondLine: String = "";
 
   updateFirstLine(firstLine: String): void{

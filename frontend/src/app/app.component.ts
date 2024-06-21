@@ -48,6 +48,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void{
     this.activeComponentService.getIsSettingsActive().subscribe((value: Boolean) => this.settings = value);
     this.activeComponentService.getIsMainMenuActive().subscribe((value: Boolean) => this.mainMenu = value);
+    this.activeComponentService.getIsMenuActive().subscribe((value: Boolean) => this.menu = value);
     this.activeComponentService.getIsGameActive().subscribe((value: Boolean) => this.game = value);
     this.activeComponentService.getIsAttackChoiceActive().subscribe((value: Boolean) => this.attackChoice = value);
     this.activeComponentService.getIsDecisionActive().subscribe((value: Boolean) => this.decision = value);
@@ -65,12 +66,12 @@ export class AppComponent implements OnInit {
     if(event.key == 'Escape' || event.key == 'm'){
       if(!this.menu){
         const activeMenu = (document.getElementsByClassName('active')[0] as HTMLUListElement);
-        this.menu = true;
+        this.activeComponentService.updateIsMenuActive(true);
         activeMenu.classList.remove('active');
         activeMenu.classList.add('inactive');
       } else{
         const inactiveMenu = (document.getElementsByClassName('inactive')[0] as HTMLUListElement);
-        this.menu = false;
+        this.activeComponentService.updateIsMenuActive(false);
         inactiveMenu.classList.remove('inactive');
         inactiveMenu.classList.add('active');
       }

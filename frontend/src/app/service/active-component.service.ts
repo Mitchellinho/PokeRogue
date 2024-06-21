@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 export class ActiveComponentService{
 
     private isMainMenuActive: Subject<Boolean> =  new Subject<Boolean>;
+    private isMenuActive: Subject<Boolean> = new Subject<Boolean>;
     private isSettingsActive: Subject<Boolean> = new Subject<Boolean>;
     private isGameActive: Subject<Boolean> = new Subject<Boolean>;
     private isAttackChoiceActive: Subject<Boolean> = new Subject<Boolean>;
@@ -17,6 +18,14 @@ export class ActiveComponentService{
 
   constructor() {
   }
+
+  updateIsMenuActive(active: Boolean){
+    this.isMenuActive.next(active);
+}
+
+getIsMenuActive(): Subject<Boolean>{
+    return this.isMenuActive;
+}
 
 updateIsMainMenuActive(active: Boolean){
     this.isMainMenuActive.next(active);
