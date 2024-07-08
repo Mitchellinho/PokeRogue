@@ -1,10 +1,10 @@
-<img src="../../assets/PokeRogue.png" alt="Logo" style="position: absolute; left: 50%; top: 2%; transform: translateX(-50%);" > 
+<img src="../../assets/PokeRogue.png" alt="Logo" style="position: absolute; left: 50%; top: 4%; transform: translateX(-50%); height: 25%;" > 
 <div class="inputBox" style="position: absolute; left: 1%; bottom: 1%; background: gray; color: white;">
   <div>
     <h2>Here are the abilities created so far: </h2>
     <ul>
-      <li *ngFor="let ability of abilitiesList">
-        {{ability.id + " : " + ability.name}}
+      <li>
+        {{abilitiesList[abilitiesList.length-1].id + ": " + abilitiesList[abilitiesList.length-1].name}}
       </li>
     </ul>
   </div>
